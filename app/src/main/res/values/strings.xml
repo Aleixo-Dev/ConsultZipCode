@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ConsultaCD</string>
+
+    <string name="city_with_one_more_char">%s-</string>
+    <string name="service_with_one_more_char">serviço: %s</string>
+
 </resources>
