@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "930180298937",
+    "project_id": "consultarcd-cc480",
+    "storage_bucket": "consultarcd-cc480.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930180298937:android:411f6a58967b01e12a4368",
+        "android_client_info": {
+          "package_name": "br.com.nicolas.consultacd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "930180298937-fka069ojr7puvl1pnk1p6u1buvibkgk1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.nicolas.consultacd",
+            "certificate_hash": "6c22a0baf561f7661cf98cdb9e50f4403feb30e1"
+          }
+        },
+        {
+          "client_id": "930180298937-c018mimsejjvabphm0qk94s5m3iu6j4p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXP3AMiTIG4Jg4f0ACvgRt0XPUONqYDv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "930180298937-c018mimsejjvabphm0qk94s5m3iu6j4p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -41,6 +41,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
+                android:inputType="numberDecimal"
                 android:layout_height="wrap_content"
                 android:hint="Buscar" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -57,6 +58,13 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout_inputCode">
 
             <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radioButton_ddd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/purple_500"
+                android:text="Ddd" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/radioButton_cep"
                 android:checked="true"
                 android:layout_width="wrap_content"
@@ -64,12 +72,6 @@
                 android:buttonTint="@color/purple_500"
                 android:text="Cep" />
 
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/radioButton_ddd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/purple_500"
-                android:text="Ddd" />
         </RadioGroup>
 
 

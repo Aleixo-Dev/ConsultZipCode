@@ -12,7 +12,9 @@ import br.com.nicolas.consultacd.R
 import br.com.nicolas.consultacd.databinding.FragmentHomeBinding
 import br.com.nicolas.consultacd.models.CepRemote
 import br.com.nicolas.consultacd.ui.home.adapter.HomeAdapter
+import br.com.nicolas.consultacd.utils.hideKeyboard
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class HomeFragment : Fragment() {
 
@@ -44,14 +46,20 @@ class HomeFragment : Fragment() {
             when (state) {
                 is HomeState.Error, HomeState.CepInvalid -> setupVisibilities(contentError = true)
                 HomeState.Loading -> setupVisibilities(progressBar = true)
-                is HomeState.Success -> setupViewCep(state.data)
-                is HomeState.SuccessDirect -> setupRecyclerViewDirect(state.cities ?: emptyList())
+                is HomeState.Success -> {
+                    setupViewCep(state.data)
+                    hideKeyboard()
+                }
+                is HomeState.SuccessDirect -> {
+                    setupRecyclerViewDirect(state.cities ?: emptyList())
+                    hideKeyboard()
+                }
             }
         }
     }
 
-    private fun setupRecyclerViewDirect(cities : List<String>) {
-        with(binding.recyclerViewDdd){
+    private fun setupRecyclerViewDirect(cities: List<String>) {
+        with(binding.recyclerViewDdd) {
             adapter = HomeAdapter(cities)
             setHasFixedSize(true)
         }
@@ -61,7 +69,9 @@ class HomeFragment : Fragment() {
         textInputLayoutInputCode.editText?.addTextChangedListener {
             val countInput = it.toString().length
             when {
-                isCepChecked && countInput == 8 -> setHomeEvent(HomeEvent.OnFetchCep(it.toString()))
+                isCepChecked && countInput == 8 -> {
+                    setHomeEvent(HomeEvent.OnFetchCep(it.toString()))
+                }
                 isDddChecked && countInput == 2 -> {
                     setHomeEvent(HomeEvent.OnFetchDirect(it.toString()))
                     setupVisibilities(recyclerDdd = true)
@@ -69,6 +79,10 @@ class HomeFragment : Fragment() {
                 else -> setHomeEvent(HomeEvent.InvalidCode)
             }
         }
+    }
+
+    private fun hideKeyboard() = binding.textInputLayoutInputCode.apply {
+        hideKeyboard()
     }
 
     private fun setupVisibilitiesRadio() {
