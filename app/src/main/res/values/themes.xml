@@ -20,4 +20,8 @@
         <item name="postSplashScreenTheme">@style/Theme.ConsultaCD</item>
     </style>
 
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
 </resources>

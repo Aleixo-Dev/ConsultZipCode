@@ -48,11 +48,11 @@ class HomeFragment : Fragment() {
                 HomeState.Loading -> setupVisibilities(progressBar = true)
                 is HomeState.Success -> {
                     setupViewCep(state.data)
-                    hideKeyboard()
+                    binding.textInputLayoutInputCode.hideKeyboard()
                 }
                 is HomeState.SuccessDirect -> {
                     setupRecyclerViewDirect(state.cities ?: emptyList())
-                    hideKeyboard()
+                    binding.textInputLayoutInputCode.hideKeyboard()
                 }
             }
         }
@@ -79,10 +79,6 @@ class HomeFragment : Fragment() {
                 else -> setHomeEvent(HomeEvent.InvalidCode)
             }
         }
-    }
-
-    private fun hideKeyboard() = binding.textInputLayoutInputCode.apply {
-        hideKeyboard()
     }
 
     private fun setupVisibilitiesRadio() {
