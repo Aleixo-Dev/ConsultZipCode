@@ -11,4 +11,4 @@
 </p>
 <div>
 
-<img  width="1000" height="400" src="https://user-images.githubusercontent.com/75820713/208754974-60f8534a-0a77-4a6e-b59c-b89ed3c75af8.png"/>
+<img  width="90%" src="https://user-images.githubusercontent.com/75820713/208762224-4fa5137f-d0aa-41aa-93c0-71bc3e2310a4.png"/>
