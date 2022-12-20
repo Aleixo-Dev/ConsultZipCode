@@ -1,9 +1,9 @@
 # ConsultarCD
 
 
-### projeto simples feito com o objetivo de consultar cep e ddd
+#### projeto simples feito com o objetivo de consultar cep e ddd de diversas cidade do brasil, é possível também visualizar a localização onde de encontra aquele cep 
 
-<div align="center">
+<div align="start">
 <p>
   <a href="https://play.google.com/store/apps/details?id=br.com.nicolas.consultacd">
     <img  width="20%" src="https://i.imgur.com/sADgtz5.png"/>
