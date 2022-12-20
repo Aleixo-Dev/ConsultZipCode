@@ -3,5 +3,8 @@
 
     <string name="city_with_one_more_char">%s-</string>
     <string name="service_with_one_more_char">serviço: %s</string>
-
+    <string name="snack_error_map">ops, houve um erro ao encontrar esta localicação</string>
+    <string name="symbol_service_alt">correios-alt</string>
+    <string name="symbol_service">correios</string>
+    <string name="nothing_found">nada encontrado</string>
 </resources>

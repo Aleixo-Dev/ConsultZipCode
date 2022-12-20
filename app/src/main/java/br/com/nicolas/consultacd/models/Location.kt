@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Location(
     @SerializedName("coordinates")
-    val coordinates: Coordinates,
+    val coordinates: Coordinates?,
     @SerializedName("type")
     val type: String
 )
