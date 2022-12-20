@@ -12,9 +12,10 @@ import br.com.nicolas.consultacd.R
 import br.com.nicolas.consultacd.databinding.FragmentHomeBinding
 import br.com.nicolas.consultacd.models.CepRemote
 import br.com.nicolas.consultacd.ui.home.adapter.HomeAdapter
+import br.com.nicolas.consultacd.ui.map.MapFragment
 import br.com.nicolas.consultacd.utils.hideKeyboard
+import br.com.nicolas.consultacd.utils.showSnack
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 class HomeFragment : Fragment() {
 
@@ -27,8 +28,7 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModel()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -47,8 +47,10 @@ class HomeFragment : Fragment() {
                 is HomeState.Error, HomeState.CepInvalid -> setupVisibilities(contentError = true)
                 HomeState.Loading -> setupVisibilities(progressBar = true)
                 is HomeState.Success -> {
-                    setupViewCep(state.data)
-                    binding.textInputLayoutInputCode.hideKeyboard()
+                    binding.apply {
+                        setupViewCep(state.data)
+                        binding.textInputLayoutInputCode.hideKeyboard()
+                    }
                 }
                 is HomeState.SuccessDirect -> {
                     setupRecyclerViewDirect(state.cities ?: emptyList())
@@ -98,7 +100,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-
     private fun cleanTextInput() {
         binding.textInputLayoutInputCode.editText?.text?.clear()
     }
@@ -109,19 +110,37 @@ class HomeFragment : Fragment() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun setupViewCep(cepRemote: CepRemote?) {
+    private fun FragmentHomeBinding.setupViewCep(cepRemote: CepRemote?) {
         setupVisibilities(layoutCep = true)
-        cepRemote?.let {
-            val isCorreios = it.service == "correios"
-            binding.includeCep.apply {
-                textViewCepCity.text = getString(R.string.city_with_one_more_char, it.city)
-                textViewCepNeighborhood.text = it.neighborhood
-                textViewCepService.text = if (isCorreios) getString(
-                    R.string.service_with_one_more_char,
-                    it.service.replaceFirstChar { "C" }) else ""
-                textViewCepState.text = it.state
-                textViewCepStreet.text = it.street
+        cepRemote?.let { cep ->
+            includeCep.apply {
+                textViewCepCity.text = getString(R.string.city_with_one_more_char, cep.city)
+                textViewCepNeighborhood.text = cep.neighborhood
+                textViewCepService.text = getString(
+                    R.string.service_with_one_more_char, setupNameService(cepRemote.service)
+                )
+                textViewCepState.text = cep.state
+                textViewCepStreet.text = cep.street
+                setupClickView(cep)
             }
+        }
+    }
+
+    private fun setupClickView(cepRemote: CepRemote) = binding.apply {
+        includeCep.viewClick.setOnClickListener {
+            if (cepRemote.location.coordinates?.latitude != null) {
+                MapFragment.build(cepRemote).show(childFragmentManager, TAG_MAP)
+            } else {
+                binding.root.showSnack(getString(R.string.snack_error_map))
+            }
+        }
+    }
+
+    private fun setupNameService(service: String): String {
+        return when (service) {
+            getString(R.string.symbol_service_alt) -> { service.split(DELIMITER)[0] }
+            getString(R.string.symbol_service) -> { service }
+            else -> { getString(R.string.nothing_found) }
         }
     }
 
@@ -141,5 +160,10 @@ class HomeFragment : Fragment() {
 
     private fun setHomeEvent(newEvent: HomeEvent) {
         viewModel.interactCep(newEvent)
+    }
+
+    companion object {
+        private const val DELIMITER = "-"
+        private const val TAG_MAP = "MapFragment"
     }
 }
