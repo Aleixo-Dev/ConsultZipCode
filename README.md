@@ -11,4 +11,4 @@
 </p>
 <div>
 
-[consultar_cd.webm](https://user-images.githubusercontent.com/75820713/188917647-19aa9c7f-90fe-46b6-a0e0-2637d5a16343.webm)
+<img  width="1000" height="400" src="https://user-images.githubusercontent.com/75820713/208754974-60f8534a-0a77-4a6e-b59c-b89ed3c75af8.png"/>
