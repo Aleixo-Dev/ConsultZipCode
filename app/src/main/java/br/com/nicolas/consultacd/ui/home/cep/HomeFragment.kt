@@ -53,7 +53,7 @@ class HomeFragment : Fragment() {
         adView.loadAd(adRequest)
     }
 
-    /*initialize ad*/
+    /* initialize ad */
     private fun initAdInterstitial() = context?.let {
         val adRequest = AdRequest.Builder().build()
         InterstitialAd.load(
