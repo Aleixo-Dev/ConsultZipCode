@@ -2,6 +2,7 @@ package br.com.nicolas.consultacd.ui.home.cep
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,16 +16,20 @@ import br.com.nicolas.consultacd.ui.home.adapter.HomeAdapter
 import br.com.nicolas.consultacd.ui.map.MapFragment
 import br.com.nicolas.consultacd.utils.hideKeyboard
 import br.com.nicolas.consultacd.utils.showSnack
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
+    private lateinit var adView: AdView
+    private var mInterstitialAd: InterstitialAd? = null
+    private var TAG = "MainActivity"
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
     private var isCepChecked = true
     private var isDddChecked = false
-
     private val viewModel: HomeViewModel by viewModel()
 
     override fun onCreateView(
@@ -39,8 +44,52 @@ class HomeFragment : Fragment() {
         render()
         fetchCep()
         setupVisibilitiesRadio()
+        initAdInterstitial()
     }
 
+    private fun initAd() {
+        adView = binding.adView
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
+    }
+
+    /*initialize ad*/
+    private fun initAdInterstitial() = context?.let {
+        val adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(
+            it,
+            "ca-app-pub-3940256099942544/1033173712",
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    Log.d(TAG, adError.toString())
+                    mInterstitialAd = null
+                }
+
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    Log.d(TAG, "Ad was loaded.")
+                    mInterstitialAd = interstitialAd
+                }
+            })
+    }
+
+    private fun showAd() {
+        if (mInterstitialAd != null) {
+            mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
+                override fun onAdDismissedFullScreenContent() {
+                    mInterstitialAd = null
+                    initAdInterstitial()
+                }
+                override fun onAdFailedToShowFullScreenContent(adError: AdError) {
+                    super.onAdFailedToShowFullScreenContent(adError)
+                    mInterstitialAd = null
+                }
+            }
+            mInterstitialAd?.show(requireActivity())
+        }
+    }
+
+    /* when the request succeeds, display the ad on the screen */
     private fun render() {
         viewModel.homeState.observe(viewLifecycleOwner) { state ->
             when (state) {
@@ -50,11 +99,13 @@ class HomeFragment : Fragment() {
                     binding.apply {
                         setupViewCep(state.data)
                         binding.textInputLayoutInputCode.hideKeyboard()
+                        showAd()
                     }
                 }
                 is HomeState.SuccessDirect -> {
                     setupRecyclerViewDirect(state.cities ?: emptyList())
                     binding.textInputLayoutInputCode.hideKeyboard()
+                    showAd()
                 }
             }
         }
@@ -138,9 +189,15 @@ class HomeFragment : Fragment() {
 
     private fun setupNameService(service: String): String {
         return when (service) {
-            getString(R.string.symbol_service_alt) -> { service.split(DELIMITER)[0] }
-            getString(R.string.symbol_service) -> { service }
-            else -> { getString(R.string.nothing_found) }
+            getString(R.string.symbol_service_alt) -> {
+                service.split(DELIMITER)[0]
+            }
+            getString(R.string.symbol_service) -> {
+                service
+            }
+            else -> {
+                getString(R.string.nothing_found)
+            }
         }
     }
 
