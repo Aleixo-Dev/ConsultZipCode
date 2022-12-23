@@ -25,7 +25,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var adView: AdView
     private var mInterstitialAd: InterstitialAd? = null
-    private var TAG = "MainActivity"
+    private var TAG = "HomeFragment"
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private var isCepChecked = true
@@ -54,11 +54,11 @@ class HomeFragment : Fragment() {
     }
 
     /* initialize ad */
-    private fun initAdInterstitial() = context?.let {
+    private fun initAdInterstitial() = context?.let { context ->
         val adRequest = AdRequest.Builder().build()
         InterstitialAd.load(
-            it,
-            "ca-app-pub-3940256099942544/1033173712",
+            context,
+            getString(R.string.ad_key),
             adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
@@ -80,6 +80,7 @@ class HomeFragment : Fragment() {
                     mInterstitialAd = null
                     initAdInterstitial()
                 }
+
                 override fun onAdFailedToShowFullScreenContent(adError: AdError) {
                     super.onAdFailedToShowFullScreenContent(adError)
                     mInterstitialAd = null

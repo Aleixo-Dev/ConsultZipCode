@@ -28,11 +28,11 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="23235345345434534534534534" />
+            android:value="@string/maps_api_key" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="@string/google_ad_mob_api_key"/>
     </application>
 
 </manifest>
