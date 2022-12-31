@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">  
-🔍 projeto simples feito com o objetivo de consultar cep e ddd de diversas cidade de todo brasil, é possível também visualizar a localização onde se encontra aquele cep 
+🔍 projeto feito com o objetivo de consultar cep e ddd de diversas cidade de todo brasil, é possível também visualizar a localização onde se encontra determinado cep 
 </p>
 
 <a href="https://play.google.com/store/apps/details?id=br.com.nicolas.consultacd">
