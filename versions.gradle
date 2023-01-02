@@ -1,0 +1,61 @@
+ext.deps = [:]
+
+def versions = [:]
+versions.core = '1.8.0'
+versions.nevigation_fragment = '2.5.1'
+versions.navigation_ui = '2.5.1'
+versions.legacy = '1.0.0'
+versions.lifecycle_livedata = '2.5.1'
+versions.lifecycle_viewmodel = '2.5.1'
+versions.appcompat = '1.5.0'
+versions.material = '1.6.1'
+versions.constraint_layout = '2.1.4'
+versions.splash_screen = '1.0.0'
+versions.squareup = '2.9.0'
+versions.koin = '3.1.2'
+versions.junit = '4.13.2'
+versions.ext_junit = '1.1.3'
+versions.espresso_core = '3.4.0'
+
+// region firebase
+versions.firebase_bom = '31.1.1'
+//enregion
+
+//region play service
+versions.play_ads = '21.4.0'
+versions.play_maps = '18.1.0'
+//endregion
+ext.versions = versions
+
+def deps = [:]
+deps.constraint = "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
+deps.material = "com.google.android.material:material:$versions.material"
+deps.appcompat = "androidx.appcompat:appcompat:$versions.appcompat"
+deps.core = "androidx.core:core-ktx:$versions.core"
+deps.viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle_viewmodel"
+deps.livedata = "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle_livedata"
+deps.legacy = "androidx.legacy:legacy-support-v4:$versions.legacy"
+deps.navigation_ui = "androidx.navigation:navigation-ui-ktx:$versions.navigation_ui"
+deps.navigation_fragment = "androidx.navigation:navigation-fragment-ktx:$versions.nevigation_fragment"
+deps.koin = "io.insert-koin:koin-android:$versions.koin"
+deps.splash_screen = "androidx.core:core-splashscreen:$versions.splash_screen"
+deps.play_ads = "com.google.android.gms:play-services-ads:$versions.play_ads"
+deps.play_maps = "com.google.android.gms:play-services-maps:$versions.play_maps"
+deps.junit = "junit:junit:$versions.junit"
+deps.ext_junit = "androidx.test.ext:junit:$versions.ext_junit"
+deps.espresso_core = "androidx.test.espresso:espresso-core:$versions.espresso_core"
+
+def firebase = [:]
+firebase.bom = "com.google.firebase:firebase-bom:$versions.firebase_bom"
+firebase.analytics_ktx = "com.google.firebase:firebase-analytics-ktx"
+firebase.analytics = "com.google.firebase:firebase-analytics"
+firebase.crashlytics = "com.google.firebase:firebase-crashlytics-ktx"
+deps.firebase = firebase
+
+def retrofit = [:]
+retrofit.retrofit2 = "com.squareup.retrofit2:retrofit:$versions.squareup"
+retrofit.converter_gson = "com.squareup.retrofit2:converter-gson:$versions.squareup"
+deps.retrofit = retrofit
+
+ext.deps = deps
+
