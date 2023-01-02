@@ -1,0 +1,29 @@
+dependencies {
+
+   implementation deps.material
+   implementation deps.constraint
+   implementation deps.appcompat
+   implementation deps.core
+   implementation deps.viewmodel
+   implementation deps.livedata
+   implementation deps.legacy
+   implementation deps.navigation_ui
+   implementation deps.navigation_fragment
+   implementation deps.koin
+   implementation deps.splash_screen
+   implementation deps.play_ads
+   implementation deps.play_maps
+
+   implementation deps.retrofit.retrofit2
+   implementation deps.retrofit.converter_gson
+
+   implementation platform(deps.firebase.bom)
+   implementation deps.firebase.analytics
+   implementation deps.firebase.analytics_ktx
+   implementation deps.firebase.crashlytics
+
+   testImplementation deps.junit
+   androidTestImplementation deps.ext_junit
+   androidTestImplementation deps.espresso_core
+
+}
