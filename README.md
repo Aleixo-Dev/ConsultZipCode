@@ -25,7 +25,7 @@
   - Lifecycle: Observe os ciclos de vida do Android e manipule os estados da interface do usuário após as alterações do ciclo de vida.
   - ViewModel: Gerencia o detentor de dados relacionados à interface do usuário e o ciclo de vida. Permite que os dados sobrevivam a alterações de configuração, como rotações de tela.
   - ViewBinding: Liga os componentes do XML no Kotlin através de uma classe que garante segurança de tipo e outras vantagens.
-  - Flow: Fluxo que emit multiplos valores sequencialmente
+  - Flow: Fluxo que emit multiplos valores sequencialmente.
 
 - Arquitetura
   - MVVM (View - ViewModel - Model)
