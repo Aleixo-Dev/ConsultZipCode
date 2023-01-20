@@ -16,7 +16,7 @@
 <img  width="20%" src="https://play.google.com/intl/en_us/badges/static/images/badges/pt_badge_web_generic.png"/>
 <img  width="90%" src="https://user-images.githubusercontent.com/75820713/208762224-4fa5137f-d0aa-41aa-93c0-71bc3e2310a4.png"/>
 
-## 📌 Tecnologias utilizadas
+## 📌 Tecnologias utilizadas.
 
 - [Linguagem Kotlin](https://kotlinlang.org/)
 
