@@ -1,8 +1,9 @@
 package br.com.nicolas.consultacd.data.respository
 
 import br.com.nicolas.consultacd.data.service.QueryService
+import br.com.nicolas.consultacd.domain.DirectModel
 import br.com.nicolas.consultacd.models.CepRemote
-import br.com.nicolas.consultacd.models.DirectRemote
+import br.com.nicolas.consultacd.models.toDirectModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -18,9 +19,9 @@ class QueryRepository(
         emit(response)
     }.flowOn(coroutineDispatcher)
 
-    override suspend fun getDirect(dddCode: String): Flow<DirectRemote> = flow<DirectRemote> {
+    override suspend fun getDirect(dddCode: String): Flow<DirectModel> = flow {
         val response = service.getDirect(dddCode)
-        emit(response)
+        emit(response.toDirectModel())
     }.flowOn(coroutineDispatcher)
 
 }

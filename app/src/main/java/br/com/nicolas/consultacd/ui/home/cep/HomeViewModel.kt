@@ -30,8 +30,7 @@ class HomeViewModel(
                 .onStart { setHomeState(HomeState.Loading) }
                 .catch { setHomeState(HomeState.Error(it.message)) }
                 .collect {
-                    setHomeState(HomeState.SuccessDirect(it.cities))
-                }
+                    setHomeState(HomeState.SuccessDirect(it)) }
         }
     }
 

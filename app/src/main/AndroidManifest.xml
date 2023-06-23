@@ -12,7 +12,6 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_launcher_foreground"
         android:supportsRtl="true"
         tools:targetApi="31">
         <activity
@@ -28,11 +27,12 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/maps_api_key" />
+            android:value="AIzaSyADV5wOoqRvFuOqsjkhGXzrhcxMuGWFSOw" />
 
+        <!-- Este id é para meio de teste -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="@string/google_ad_mob_api_key"/>
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
     </application>
 
 </manifest>
