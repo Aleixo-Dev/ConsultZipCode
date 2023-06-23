@@ -1,87 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+    app:strokeColor="@color/gray_800"
+    app:strokeWidth="1dp">
 
-
-    <TextView
-        android:id="@+id/textView_cepCity"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Mairiporã" />
+        android:padding="8dp">
 
-    <TextView
-        android:id="@+id/textView_cepStreet"
-        android:layout_width="0dp"
-        android:textSize="15sp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_cepCity"
-        tools:text="Rua Senador Robert Kennedy" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_cepCity"
+            style="@style/TextAppearance.MdcTypographyStyles.Headline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Mairiporã" />
 
-    <TextView
-        android:id="@+id/textView_cepNeighborhood"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView_cepStreet"
-        app:layout_constraintTop_toBottomOf="@+id/textView_cepStreet"
-        tools:text="Moinho" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_cepStreet"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray_800"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_cepCity"
+            tools:text="Rua Senador Robert Kennedy" />
 
-    <TextView
-        android:textSize="16sp"
-        android:id="@+id/textView_cepState"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textView_cepCity"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="-SP" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_cepNeighborhood"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray_800"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView_cepStreet"
+            app:layout_constraintTop_toBottomOf="@+id/textView_cepStreet"
+            tools:text="Moinho" />
 
-    <TextView
-        android:id="@+id/textView_cepService"
-        android:layout_width="wrap_content"
-        android:textSize="15sp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/purple_500"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_cepNeighborhood"
-        tools:text="Serviço: Correios" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_cepState"
+            style="@style/TextAppearance.MdcTypographyStyles.Headline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/textView_cepCity"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="-SP" />
 
-    <View
-        android:id="@+id/view_click"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_cepService"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_cepService"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Ver no mapa"
+            android:textColor="@color/purple_500"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView_map"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_cepNeighborhood" />
 
-    <ImageView
-        android:id="@+id/imageView_map"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView_cepService"
-        app:layout_constraintTop_toBottomOf="@+id/textView_cepNeighborhood"
-        app:srcCompat="@drawable/ic_round_map_24" />
+        <View
+            android:id="@+id/view_click"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_cepService"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/imageView_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView_cepService"
+            app:layout_constraintTop_toBottomOf="@+id/textView_cepNeighborhood"
+            app:srcCompat="@drawable/ic_round_map_24" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
