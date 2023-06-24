@@ -16,8 +16,8 @@ android {
         applicationId "br.com.nicolas.consultacd"
         minSdk 23
         targetSdk 32
-        versionCode 5
-        versionName "3.0.0"
+        versionCode 6
+        versionName "4.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

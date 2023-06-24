@@ -1,5 +1,6 @@
 package br.com.nicolas.consultacd.ui.home.cep
 
+import br.com.nicolas.consultacd.domain.DirectModel
 import br.com.nicolas.consultacd.models.CepRemote
 
 sealed class HomeState {
@@ -11,7 +12,7 @@ sealed class HomeState {
     ) : HomeState()
 
     data class SuccessDirect(
-        val cities : List<String>? = emptyList()
+        val directModel : DirectModel
     ) : HomeState()
 
     data class Error(

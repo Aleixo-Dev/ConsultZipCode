@@ -3,19 +3,21 @@ package br.com.nicolas.consultacd.ui.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import br.com.nicolas.consultacd.databinding.LayoutCepBinding
 import br.com.nicolas.consultacd.databinding.LayoutDirectBinding
-import br.com.nicolas.consultacd.models.CepRemote
+import java.lang.StringBuilder
 
 class HomeAdapter(
-    private val cities: List<String>
+    private val cities: List<String>,
+    private val state: String
 ) : RecyclerView.Adapter<HomeAdapter.MainViewHolder>() {
 
-    class MainViewHolder(private val binding: LayoutDirectBinding) :
+    inner class MainViewHolder(private val binding: LayoutDirectBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(cities: String) {
-            binding.textViewDirectCity.text = cities
+        fun bind(city: String) {
+            binding.textViewDirectCity.text = city
+            binding.textViewDirectState.text = StringBuilder()
+                .append("-").append(state)
         }
     }
 
@@ -30,7 +32,8 @@ class HomeAdapter(
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        holder.bind(cities[position])
+        val sortedByNameList = cities.sortedBy { it }
+        holder.bind(sortedByNameList[position])
     }
 
     override fun getItemCount() = cities.size

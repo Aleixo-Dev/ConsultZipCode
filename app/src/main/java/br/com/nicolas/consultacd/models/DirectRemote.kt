@@ -1,6 +1,6 @@
 package br.com.nicolas.consultacd.models
 
-
+import br.com.nicolas.consultacd.domain.DirectModel
 import com.google.gson.annotations.SerializedName
 
 data class DirectRemote(
@@ -8,4 +8,8 @@ data class DirectRemote(
     val cities: List<String>,
     @SerializedName("state")
     val state: String
+)
+
+fun DirectRemote.toDirectModel() = DirectModel(
+    cities, state
 )

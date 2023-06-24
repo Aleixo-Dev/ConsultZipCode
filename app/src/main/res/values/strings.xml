@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ConsultaCD</string>
+    <string name="app_name">Buscar Cep</string>
 
     <string name="city_with_one_more_char">%s-</string>
     <string name="service_with_one_more_char">serviço: %s</string>
@@ -7,4 +7,18 @@
     <string name="symbol_service_alt">correios-alt</string>
     <string name="symbol_service">correios</string>
     <string name="nothing_found">nada encontrado</string>
+    <string name="see_on_map">Ver no mapa</string>
+
+    <!-- AdMob Key -->
+    <string name="admob_key_id_test">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob_key_id_banner_test">ca-app-pub-3940256099942544/6300978111</string>
+
+    <!-- Strings -->
+    <string name="title">Faça agora mesmo \numa busca rápida 😎</string>
+    <string name="input_hint_text">Buscar</string>
+    <string name="title_direct">DDD</string>
+    <string name="title_cep">CEP</string>
+    <string name="title_not_foud">Oops, não conseguimos\nencontrar nada</string>
+    <string name="web_form_bug_report">https://forms.gle/CApVqyLX8BbAaNTr8</string>
+
 </resources>
