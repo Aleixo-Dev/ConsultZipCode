@@ -10,14 +10,14 @@ apply from: '../versions.gradle'
 apply from: '../dependencies.gradle'
 
 android {
-    compileSdk 32
+    compileSdk 34
 
     defaultConfig {
         applicationId "br.com.nicolas.consultacd"
         minSdk 23
-        targetSdk 32
-        versionCode 6
-        versionName "4.0.0"
+        targetSdk 33
+        versionCode 7
+        versionName "5.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
